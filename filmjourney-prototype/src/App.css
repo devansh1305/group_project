@@ -1,0 +1,10 @@
+/* src/App.css */
+/* You might not need much here if ScreenStyles.css covers body etc. */
+.app-container {
+  /* Ensures the container takes up viewport height if needed */
+  /* min-height: 100vh; */
+}
+
+.content-area {
+  /* Padding etc. is handled in ScreenStyles.css */
+}

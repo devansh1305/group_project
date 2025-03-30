@@ -1,0 +1,140 @@
+/* src/components/RatingComponent.css */
+.rating-section {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .star-rating {
+    margin-bottom: 15px;
+  }
+  
+  .star {
+    font-size: 24px;
+    color: #ccc; /* Empty star color */
+    cursor: pointer;
+    margin-right: 2px;
+    transition: color 0.1s ease-in-out;
+  }
+  
+  .star.full {
+    color: #f5c518; /* Filled star color (IMDb yellow) */
+  }
+  .star.half {
+      /* Basic half star using linear gradient - browser support varies */
+      background: linear-gradient(to right, #f5c518 50%, #ccc 50%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #f5c518; /* Fallback color */
+  }
+  
+  .rating-value {
+      font-size: 14px;
+      margin-left: 5px;
+      color: #555;
+  }
+  
+  
+  .emotion-rating {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .emotion-rating label {
+      margin-right: 10px;
+      font-weight: bold;
+  }
+  
+  .emoji-button {
+    font-size: 24px;
+    background: none;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    padding: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: transform 0.1s ease, border-color 0.1s ease;
+  }
+  .emoji-button:hover {
+      transform: scale(1.1);
+  }
+  
+  .emoji-button.selected {
+    border-color: #007bff; /* Highlight selected */
+    transform: scale(1.1);
+  }
+  
+  .emotion-value {
+      font-size: 14px;
+      margin-left: 5px;
+      color: #555;
+  }
+  
+  .quick-tags {
+      margin-bottom: 10px;
+  }
+  .quick-tags label {
+      margin-right: 5px;
+       font-weight: bold;
+  }
+  .selected-tags {
+      margin-bottom: 15px;
+      min-height: 25px; /* Ensure space even if empty */
+  }
+  
+  .tag-bubble {
+      display: inline-block;
+      background-color: #e0e0e0;
+      color: #333;
+      padding: 3px 8px;
+      border-radius: 15px;
+      margin: 2px 4px;
+      font-size: 12px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      transition: background-color 0.2s ease;
+  }
+  .tag-bubble:hover {
+      background-color: #d0d0d0;
+  }
+  .tag-bubble.selected {
+       background-color: #cce5ff; /* Light blue for selected */
+       border-color: #b8daff;
+  }
+  .remove-tag {
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 10px;
+      margin-left: 3px;
+      cursor: pointer;
+  }
+  .remove-tag:hover {
+      color: #333;
+  }
+  
+  
+  .review-section textarea {
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-family: sans-serif; /* Match default font */
+  }
+  
+  .save-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .save-button:hover {
+    background-color: #218838;
+  }
