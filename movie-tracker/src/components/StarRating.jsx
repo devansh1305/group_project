@@ -2,8 +2,9 @@
 import { StarIcon } from '@heroicons/react/24/solid';
 import { StarIcon as StarOutlineIcon } from '@heroicons/react/24/outline';
 
-function StarRating({ rating, interactive = false, onChange }) {
+function StarRating({ rating, interactive = false, onChange, size = 'normal' }) {
   const totalStars = 5;
+  const starSize = size === 'small' ? 'h-3 w-3' : 'h-5 w-5';
   
   if (interactive) {
     return (
@@ -15,9 +16,9 @@ function StarRating({ rating, interactive = false, onChange }) {
             className="focus:outline-none"
           >
             {i < rating ? (
-              <StarIcon className="h-5 w-5 text-yellow-400" />
+              <StarIcon className={`${starSize} text-yellow-400`} />
             ) : (
-              <StarOutlineIcon className="h-5 w-5 text-yellow-400" />
+              <StarOutlineIcon className={`${starSize} text-yellow-400`} />
             )}
           </button>
         ))}
@@ -30,9 +31,9 @@ function StarRating({ rating, interactive = false, onChange }) {
       {[...Array(totalStars)].map((_, i) => (
         <span key={i}>
           {i < rating ? (
-            <StarIcon className="h-5 w-5 text-yellow-400" />
+            <StarIcon className={`${starSize} text-yellow-400`} />
           ) : (
-            <StarOutlineIcon className="h-5 w-5 text-gray-300" />
+            <StarOutlineIcon className={`${starSize} text-gray-300`} />
           )}
         </span>
       ))}

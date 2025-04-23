@@ -1,13 +1,16 @@
 // src/pages/Home.jsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
+import MovieCarousel from '../components/MovieCarousel';
 import { mockMovies } from '../data/mockData';
+import StarRating from '../components/StarRating';
 
 function Home() {
   const location = useLocation();
   const [searchResults, setSearchResults] = useState([]);
   const searchQuery = location.state?.searchQuery || '';
+  const searchResultsRef = useRef(null);
 
   useEffect(() => {
     if (searchQuery) {
@@ -16,26 +19,68 @@ function Home() {
         movie.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setSearchResults(results);
+      
+      // Scroll to search results
+      setTimeout(() => {
+        if (searchResultsRef.current) {
+          searchResultsRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     } else {
       setSearchResults([]);
     }
   }, [searchQuery]);
 
-  // Group movies by category
-  const recommendations = mockMovies.filter(movie => movie.categories.includes('recommended')).slice(0, 4);
-  const watchLater = mockMovies.filter(movie => movie.categories.includes('watchLater')).slice(0, 4);
-  const watchHistory = mockMovies.filter(movie => movie.categories.includes('watched')).slice(0, 4);
+  // Group movies by category - get more movies for carousels
+  const recommendations = mockMovies.filter(movie => movie.categories.includes('recommended')).slice(0, 6);
+  const watchLater = mockMovies.filter(movie => movie.categories.includes('watchLater')).slice(0, 6);
+  const watchHistory = mockMovies.filter(movie => movie.categories.includes('watched')).slice(0, 6);
 
   return (
     <div>
       {searchQuery ? (
-        <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Search Results for "{searchQuery}"</h2>
+        <div ref={searchResultsRef}>
+          <h2 className="text-xl font-bold text-gray-900 mb-4">Search Results for "{searchQuery}"</h2>
           {searchResults.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div className="flex flex-col space-y-4">
               {searchResults.map(movie => (
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <MovieCard movie={movie} />
+                <Link key={movie.id} to={`/movie/${movie.id}`} className="block">
+                  <div className="flex border rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow">
+                    {/* Movie poster */}
+                    <div className="w-24 h-36 flex-shrink-0">
+                      {movie.poster ? (
+                        <img
+                          src={movie.poster}
+                          alt={movie.title}
+                          className="w-full h-full object-cover object-center"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full bg-gray-200">
+                          <span className="text-gray-500 text-xs">No Image</span>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Movie details */}
+                    <div className="flex-1 p-3 flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-sm font-medium text-gray-900">{movie.title}</h3>
+                        <div className="mt-1">
+                          <StarRating rating={movie.rating} />
+                        </div>
+                      </div>
+                      
+                      {movie.streamingServices && (
+                        <div className="mt-2 flex flex-wrap gap-1">
+                          {movie.streamingServices.map(service => (
+                            <span key={service} className="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
+                              {service}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -44,57 +89,27 @@ function Home() {
           )}
         </div>
       ) : (
-        <div className="space-y-10">
-          {/* Recommendations Section */}
-          <section>
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">Recommendations</h2>
-              <Link to="/recommendations" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                View All
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-              {recommendations.map(movie => (
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <MovieCard movie={movie} />
-                </Link>
-              ))}
-            </div>
-          </section>
+        <div className="space-y-8 mt-2">
+          {/* Recommendations Carousel */}
+          <MovieCarousel 
+            movies={recommendations} 
+            title="Recommendations" 
+            viewAllLink="/recommendations" 
+          />
 
-          {/* Watch Later Section */}
-          <section>
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">Watch Later</h2>
-              <Link to="/watch-later" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                View All
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-              {watchLater.map(movie => (
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <MovieCard movie={movie} />
-                </Link>
-              ))}
-            </div>
-          </section>
+          {/* Watch Later Carousel */}
+          <MovieCarousel 
+            movies={watchLater} 
+            title="Watch Later" 
+            viewAllLink="/watch-later" 
+          />
 
-          {/* Watch History Section */}
-          <section>
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">Watch History</h2>
-              <Link to="/watch-history" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                View All
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-              {watchHistory.map(movie => (
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <MovieCard movie={movie} />
-                </Link>
-              ))}
-            </div>
-          </section>
+          {/* Watch History Carousel */}
+          <MovieCarousel 
+            movies={watchHistory} 
+            title="Watch History" 
+            viewAllLink="/watch-history" 
+          />
         </div>
       )}
     </div>

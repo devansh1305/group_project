@@ -1,5 +1,5 @@
 // src/components/Layout.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { MagnifyingGlassIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 
@@ -7,9 +7,12 @@ function Layout() {
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
+  // Auto-search for Harry Potter when search button is clicked
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate('/', { state: { searchQuery } });
+    const query = searchQuery || 'Harry Potter'; // Default to "Harry Potter" if empty
+    setSearchQuery(query);
+    navigate('/', { state: { searchQuery: query } });
   };
 
   return (

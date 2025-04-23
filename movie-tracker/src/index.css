@@ -5,6 +5,16 @@
 @tailwind components;
 @tailwind utilities; */
 
+/* Custom styles for carousels */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: #f8f9fa;
