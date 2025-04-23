@@ -4,6 +4,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeftIcon, PlusIcon, StarIcon, ShareIcon } from '@heroicons/react/24/outline';
 import StarRating from '../components/StarRating';
 import RateReviewModal from '../components/RateReviewModal';
+import StreamingPlatformLogo from '../components/StreamingPlatformLogo';
 import { mockMovies } from '../data/mockData';
 
 function MovieDetail() {
@@ -122,14 +123,13 @@ function MovieDetail() {
         {/* Available On */}
         <div>
           <h2 className="text-sm font-medium text-gray-500 mb-1">Available On</h2>
-          <div className="flex flex-wrap gap-1">
+          <div className="grid grid-cols-5 gap-2">
             {movie.streamingServices.map(service => (
-              <span
+              <StreamingPlatformLogo
                 key={service}
-                className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
-              >
-                {service}
-              </span>
+                platform={service}
+                className="h-10"
+              />
             ))}
           </div>
         </div>

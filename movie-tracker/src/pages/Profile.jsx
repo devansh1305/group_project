@@ -1,12 +1,13 @@
 // src/pages/Profile.jsx
 import { PencilIcon, ShareIcon } from '@heroicons/react/24/outline';
+import StreamingPlatformLogo from '../components/StreamingPlatformLogo';
 
 function Profile() {
   // Mock user data
   const user = {
     name: 'Jane Smith',
     reviewCount: 42,
-    preferredPlatforms: ['Netflix', 'Disney+', 'Prime Video'],
+    preferredPlatforms: ['Netflix', 'Disney+', 'Prime Video', 'Hulu', 'HBO Max'],
     favoriteGenres: ['Sci-Fi', 'Drama', 'Comedy'],
   };
 
@@ -39,14 +40,13 @@ function Profile() {
         
         <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
           <h2 className="text-lg font-medium text-gray-900">Preferred Streaming Platforms</h2>
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
+          <div className="mt-4 grid grid-cols-3 gap-3">
             {user.preferredPlatforms.map(platform => (
-              <div
+              <StreamingPlatformLogo
                 key={platform}
-                className="bg-gray-100 rounded-lg p-4 text-center flex items-center justify-center"
-              >
-                <span className="font-medium">{platform}</span>
-              </div>
+                platform={platform}
+                className="aspect-square"
+              />
             ))}
           </div>
         </div>
