@@ -90,7 +90,7 @@ function FilterModal({ onClose, onApplyFilters }) {
       <div className="bg-white rounded-lg shadow-xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
         <div className="p-6">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-xl font-medium text-gray-900">Filters</h3>
+            <h3 className="text-xl font-medium">Filters</h3>
             <button
               type="button"
               className="text-gray-400 hover:text-gray-500"
@@ -143,25 +143,8 @@ function FilterModal({ onClose, onApplyFilters }) {
               ))}
             </div>
           </div>
-          
-          {/* Sort options */}
-          <div className="mt-6">
-            <h4 className="text-sm font-medium text-gray-700 mb-2">Sort</h4>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-            >
-              <option value="">Select...</option>
-              <option value="rating-high">Sort by Ratings: Highest First</option>
-              <option value="rating-low">Sort by Ratings: Lowest First</option>
-              <option value="date-new">Sort by Release Date: Newest First</option>
-              <option value="date-old">Sort by Release Date: Oldest First</option>
-            </select>
-          </div>
-          
           {/* Only show available on my platforms toggle */}
-          <div className="mt-6">
+          <div className="mt-1.5">
             <div className="flex items-center">
               <input
                 id="only-my-platforms"
@@ -177,11 +160,29 @@ function FilterModal({ onClose, onApplyFilters }) {
             </div>
           </div>
           
+          {/* Sort options */}
+          <div className="mt-6">
+            <h4 className="text-sm font-medium text-gray-700 mb-2">Sort</h4>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base text-gray-700 focus:border-indigo-500 focus:ring-indigo-500"
+            >
+              <option value="">Select...</option>
+              <option value="rating-high">Ratings: Highest First</option>
+              <option value="rating-low">Ratings: Lowest First</option>
+              <option value="date-new">Release Date: Newest First</option>
+              <option value="date-old">Release Date: Oldest First</option>
+            </select>
+          </div>
+          
+          
+          
           {/* Buttons */}
           <div className="mt-8 flex justify-between">
             <button
               type="button"
-              className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               onClick={handleReset}
             >
               Reset All

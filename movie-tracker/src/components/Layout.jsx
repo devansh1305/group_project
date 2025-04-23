@@ -44,7 +44,7 @@ function Layout() {
       </header>
 
       {/* Navigation */}
-      <nav className="bg-white shadow-sm">
+      {/* <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex space-x-8">
@@ -60,7 +60,7 @@ function Layout() {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -63,7 +63,7 @@ function RateReviewModal({ movie, onClose }) {
             <textarea
               id="review"
               rows={4}
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-gray-900"
               placeholder="Your Review..."
               value={review}
               onChange={(e) => setReview(e.target.value)}
@@ -77,7 +77,7 @@ function RateReviewModal({ movie, onClose }) {
             <input
               type="text"
               id="date-watched"
-              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-gray-900"
               placeholder="MM/DD/YY"
               value={dateWatched}
               onChange={(e) => setDateWatched(e.target.value)}

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FunnelIcon } from '@heroicons/react/24/outline';
 import MovieCard from '../components/MovieCard';
+import StarRating from '../components/StarRating';
 import FilterModal from '../components/FilterModal';
 import { mockMovies } from '../data/mockData';
 
@@ -11,7 +12,7 @@ function Recommendations() {
   const [activeFilters, setActiveFilters] = useState({
     genres: [],
     platforms: [],
-    sortBy: '',
+    sortBy: 'rating-high', // Default sort by highest rating
     onlyMyPlatforms: false,
   });
   
@@ -52,66 +53,90 @@ function Recommendations() {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">Recommendations</h1>
-        <button
-          type="button"
-          onClick={() => setShowFilterModal(true)}
-          className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
-          <FunnelIcon className="mr-2 h-4 w-4" aria-hidden="true" />
-          Filters
-        </button>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-l font-bold text-gray-900">Recommendations</h2>
+        <div className="flex items-center space-x-2">
+          <select
+            className="block w-24 pl-2 pr-6 py-1 text-xs border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md"
+            value={activeFilters.sortBy}
+            onChange={(e) => setActiveFilters(prev => ({ ...prev, sortBy: e.target.value }))}
+          >
+            <option value="rating-high">Top Rated</option>
+            <option value="rating-low">Low Rated</option>
+            <option value="date-new">Newest</option>
+            <option value="date-old">Oldest</option>
+          </select>
+          
+          <button
+            type="button"
+            onClick={() => setShowFilterModal(true)}
+            className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <FunnelIcon className="mr-2 h-4 w-4" aria-hidden="true" />
+            Filters
+          </button>
+        </div>
       </div>
       
-      {/* Active filters */}
-      {(activeFilters.genres.length > 0 || activeFilters.platforms.length > 0 || activeFilters.sortBy || activeFilters.onlyMyPlatforms) && (
-        <div className="mb-6">
-          <h2 className="text-sm font-medium text-gray-500">Active Filters:</h2>
-          <div className="mt-2 flex flex-wrap gap-2">
+      {/* Active filters - only show genre and platform filters */}
+      {(activeFilters.genres.length > 0 || activeFilters.platforms.length > 0 || activeFilters.onlyMyPlatforms) && (
+        <div className="mb-3 px-1">
+          <h2 className="text-xs font-medium text-gray-500">Filters:</h2>
+          <div className="mt-1 flex flex-wrap gap-1">
             {activeFilters.genres.map(genre => (
-              <span key={genre} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+              <span key={genre} className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-indigo-100 text-indigo-800">
                 {genre}
               </span>
             ))}
             {activeFilters.platforms.map(platform => (
-              <span key={platform} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+              <span key={platform} className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-100 text-blue-800">
                 {platform}
               </span>
             ))}
-            {activeFilters.sortBy && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                {activeFilters.sortBy.includes('rating')
-                  ? `Rating: ${activeFilters.sortBy.includes('high') ? 'Highest First' : 'Lowest First'}`
-                  : `Release Date: ${activeFilters.sortBy.includes('new') ? 'Newest First' : 'Oldest First'}`
-                }
-              </span>
-            )}
             {activeFilters.onlyMyPlatforms && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                Only My Platforms
+              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-yellow-100 text-yellow-800">
+                My Platforms
               </span>
             )}
           </div>
         </div>
       )}
       
-      {/* Movie grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+      {/* Movie grid - exactly matching Watch Later layout */}
+      <div className="grid grid-cols-2 gap-4 px-1">
         {filteredMovies.map(movie => (
           <Link
             key={movie.id}
             to={`/movie/${movie.id}`}
             state={{ from: 'recommendations' }}
+            className="block"
           >
-            <MovieCard movie={movie} />
+            <div className="aspect-[2/3] overflow-hidden rounded-lg relative">
+              {movie.poster ? (
+                <img
+                  src={movie.poster}
+                  alt={movie.title}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                  <span className="text-gray-500">No Image</span>
+                </div>
+              )}
+            </div>
+            <div className="mt-1">
+              <h3 className="text-xs font-medium text-gray-900 truncate">{movie.title}</h3>
+              <div className="flex items-center mt-1">
+                <StarRating rating={movie.rating} size="small" />
+              </div>
+            </div>
           </Link>
         ))}
       </div>
       
       {filteredMovies.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-500">No movies match your filters. Try adjusting your criteria.</p>
+        <div className="text-center py-8">
+          <p className="text-gray-500 text-sm">No movies match your filters. Try adjusting your criteria.</p>
         </div>
       )}
       

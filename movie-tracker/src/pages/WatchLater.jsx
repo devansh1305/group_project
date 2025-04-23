@@ -53,7 +53,7 @@ function WatchLater() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">Watch Later</h1>
+        <h2 className="text-xl text-nowrap font-bold text-gray-900">Watch Later</h2>
         <div className="flex space-x-4">
           <select
             className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
@@ -69,7 +69,7 @@ function WatchLater() {
           <button
             type="button"
             onClick={() => setShowFilterModal(true)}
-            className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <FunnelIcon className="mr-2 h-4 w-4" aria-hidden="true" />
             Filters
