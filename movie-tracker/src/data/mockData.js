@@ -145,7 +145,7 @@ export const mockMovies = [
   {
     id: 2,
     title: "The Shawshank Redemption",
-    poster: "https://via.placeholder.com/300x450?text=Shawshank",
+    poster: "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
     rating: 4.9,
     releaseDate: "1994-10-14",
     imdbRating: 9.3,
@@ -161,7 +161,7 @@ export const mockMovies = [
   {
     id: 13,
     title: "Everything Everywhere All at Once",
-    poster: "https://via.placeholder.com/300x450?text=Everything+Everywhere",
+    poster: "https://image.tmdb.org/t/p/w500/w3LxiVYdWWRvEVdn5RYq6jIqkb1.jpg",
     rating: 4.9,
     releaseDate: "2022-03-25",
     imdbRating: 8.0,
@@ -177,7 +177,7 @@ export const mockMovies = [
   {
     id: 14,
     title: "Dune",
-    poster: "https://via.placeholder.com/300x450?text=Dune",
+    poster: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
     rating: 4.6,
     releaseDate: "2021-10-22",
     imdbRating: 8.0,
@@ -193,7 +193,7 @@ export const mockMovies = [
   {
     id: 15,
     title: "Parasite",
-    poster: "https://via.placeholder.com/300x450?text=Parasite",
+    poster: "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
     rating: 4.8,
     releaseDate: "2019-11-08",
     imdbRating: 8.5,
@@ -209,7 +209,7 @@ export const mockMovies = [
   {
     id: 16,
     title: "Top Gun: Maverick",
-    poster: "https://via.placeholder.com/300x450?text=Top+Gun+Maverick",
+    poster: "https://image.tmdb.org/t/p/w500/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
     rating: 4.5,
     releaseDate: "2022-05-27",
     imdbRating: 8.3,
@@ -224,7 +224,7 @@ export const mockMovies = [
   {
     id: 17,
     title: "The Batman",
-    poster: "https://via.placeholder.com/300x450?text=The+Batman",
+    poster: "https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg",
     rating: 4.3,
     releaseDate: "2022-03-04",
     imdbRating: 7.8,
@@ -241,7 +241,7 @@ export const mockMovies = [
   {
     id: 18,
     title: "The Shining",
-    poster: "https://via.placeholder.com/300x450?text=The+Shining",
+    poster: "https://image.tmdb.org/t/p/w500/b6ko0IKC8MdYBBPkkA1aBPLe2yz.jpg",
     rating: 4.7,
     releaseDate: "1980-05-23",
     imdbRating: 8.4,
@@ -256,7 +256,7 @@ export const mockMovies = [
   {
     id: 19,
     title: "Guardians of the Galaxy Vol. 3",
-    poster: "https://via.placeholder.com/300x450?text=GOTG+Vol+3",
+    poster: "https://image.tmdb.org/t/p/w500/r2J02Z2OpNTctfOSN1Ydgii51I3.jpg",
     rating: 4.4,
     releaseDate: "2023-05-05",
     imdbRating: 7.9,
@@ -271,7 +271,7 @@ export const mockMovies = [
   {
     id: 20,
     title: "Black Panther: Wakanda Forever",
-    poster: "https://via.placeholder.com/300x450?text=Wakanda+Forever",
+    poster: "https://image.tmdb.org/t/p/w500/sv1xJUazXeYqALzczSZ3O6nkH75.jpg",
     rating: 4.2,
     releaseDate: "2022-11-11",
     imdbRating: 6.7,
@@ -287,7 +287,7 @@ export const mockMovies = [
   {
     id: 21,
     title: "Oppenheimer",
-    poster: "https://via.placeholder.com/300x450?text=Oppenheimer",
+    poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
     rating: 4.9,
     releaseDate: "2023-07-21",
     imdbRating: 8.4,
@@ -303,7 +303,7 @@ export const mockMovies = [
   {
     id: 22,
     title: "Barbie",
-    poster: "https://via.placeholder.com/300x450?text=Barbie",
+    poster: "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi8Qzrd8jyeYO.jpg",
     rating: 4.4,
     releaseDate: "2023-07-21",
     imdbRating: 7.0,
@@ -319,7 +319,7 @@ export const mockMovies = [
   {
     id: 23,
     title: "The Super Mario Bros. Movie",
-    poster: "https://via.placeholder.com/300x450?text=Mario+Bros",
+    poster: "https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
     rating: 3.8,
     releaseDate: "2023-04-05",
     imdbRating: 7.1,
@@ -335,7 +335,7 @@ export const mockMovies = [
   {
     id: 24,
     title: "Mission: Impossible - Dead Reckoning Part One",
-    poster: "https://via.placeholder.com/300x450?text=MI+Dead+Reckoning",
+    poster: "https://image.tmdb.org/t/p/w500/NNxYkU70HPurnNCSiCjYAmacwm.jpg",
     rating: 4.5,
     releaseDate: "2023-07-12",
     imdbRating: 7.7,
@@ -350,7 +350,7 @@ export const mockMovies = [
   {
     id: 25,
     title: "Poor Things",
-    poster: "https://via.placeholder.com/300x450?text=Poor+Things",
+    poster: "https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg",
     rating: 4.7,
     releaseDate: "2023-12-08",
     imdbRating: 8.0,
@@ -365,7 +365,7 @@ export const mockMovies = [
   {
     id: 26,
     title: "The Holdovers",
-    poster: "https://via.placeholder.com/300x450?text=The+Holdovers",
+    poster: "https://image.tmdb.org/t/p/w500/VnGkMVCCaswye4mhGXLRVgonIIv.jpg",
     rating: 4.6,
     releaseDate: "2023-11-10",
     imdbRating: 7.9,
@@ -381,7 +381,7 @@ export const mockMovies = [
   {
     id: 27,
     title: "The Marvels",
-    poster: "https://via.placeholder.com/300x450?text=The+Marvels",
+    poster: "https://image.tmdb.org/t/p/w500/Ag3D9qXjhJ2FUkrlJ0Cv1pg5mZf.jpg",
     rating: 3.5,
     releaseDate: "2023-11-10",
     imdbRating: 6.0,
