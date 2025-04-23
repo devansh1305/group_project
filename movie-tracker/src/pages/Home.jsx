@@ -31,10 +31,10 @@ function Home() {
     }
   }, [searchQuery]);
 
-  // Group movies by category - get more movies for carousels
-  const recommendations = mockMovies.filter(movie => movie.categories.includes('recommended')).slice(0, 6);
-  const watchLater = mockMovies.filter(movie => movie.categories.includes('watchLater')).slice(0, 6);
-  const watchHistory = mockMovies.filter(movie => movie.categories.includes('watched')).slice(0, 6);
+  // Group movies by category - limit to exactly 3 for each section
+  const recommendations = mockMovies.filter(movie => movie.categories.includes('recommended')).slice(0, 3);
+  const watchLater = mockMovies.filter(movie => movie.categories.includes('watchLater')).slice(0, 3);
+  const watchHistory = mockMovies.filter(movie => movie.categories.includes('watched')).slice(0, 3);
 
   return (
     <div>

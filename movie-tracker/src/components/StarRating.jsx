@@ -4,7 +4,7 @@ import { StarIcon as StarOutlineIcon } from '@heroicons/react/24/outline';
 
 function StarRating({ rating, interactive = false, onChange, size = 'normal' }) {
   const totalStars = 5;
-  const starSize = size === 'small' ? 'h-3 w-3' : 'h-5 w-5';
+  const starSize = size === 'small' ? 'h-2 w-2' : 'h-5 w-5';
   
   if (interactive) {
     return (
