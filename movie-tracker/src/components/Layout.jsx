@@ -17,7 +17,7 @@ function Layout() {
       {/* Header with search bar */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-indigo-600">MovieTracker</Link>
+          <Link to="/" className="text-2xl font-bold text-indigo-600">FilmJourney</Link>
           
           <form onSubmit={handleSearch} className="w-1/2">
             <div className="relative">
