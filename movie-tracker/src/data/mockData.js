@@ -82,7 +82,7 @@ export const mockMovies = [
   {
     id: 106,
     title: "Harry Potter and the Half-Blood Prince",
-    poster: "https://image.tmdb.org/t/p/w500/f9SLieHywU0WfPuIF3OYmwzONbs.jpg",
+    poster: "https://image.tmdb.org/t/p/w500/z7uo9zmQdQwU5ZJHFpv2Upl30i1.jpg",
     rating: 4.6,
     releaseDate: "2009-07-15",
     imdbRating: 7.6,
@@ -303,7 +303,7 @@ export const mockMovies = [
   {
     id: 22,
     title: "Barbie",
-    poster: "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi8Qzrd8jyeYO.jpg",
+    poster: "https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
     rating: 4.4,
     releaseDate: "2023-07-21",
     imdbRating: 7.0,
@@ -365,7 +365,7 @@ export const mockMovies = [
   {
     id: 26,
     title: "The Holdovers",
-    poster: "https://image.tmdb.org/t/p/w500/VnGkMVCCaswye4mhGXLRVgonIIv.jpg",
+    poster: "https://image.tmdb.org/t/p/w500/VHSzNBTwxV8vh7wylo7O9CLdac.jpg",
     rating: 4.6,
     releaseDate: "2023-11-10",
     imdbRating: 7.9,
@@ -381,7 +381,7 @@ export const mockMovies = [
   {
     id: 27,
     title: "The Marvels",
-    poster: "https://image.tmdb.org/t/p/w500/Ag3D9qXjhJ2FUkrlJ0Cv1pg5mZf.jpg",
+    poster: "https://image.tmdb.org/t/p/w500/9GBhzXMFjgcZ3FdR9w3bUMMTps5.jpg",
     rating: 3.5,
     releaseDate: "2023-11-10",
     imdbRating: 6.0,

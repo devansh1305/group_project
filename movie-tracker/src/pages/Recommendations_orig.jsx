@@ -102,21 +102,8 @@ function Recommendations() {
         </div>
       )}
       
-      {/* Movie grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredMovies.map(movie => (
-          <Link
-            key={movie.id}
-            to={`/movie/${movie.id}`}
-            state={{ from: 'watch-later' }}
-          >
-            <MovieCard movie={movie} />
-          </Link>
-        ))}
-      </div>
-
       {/* Movie grid - exactly matching Watch Later layout */}
-      {/* <div className="grid grid-cols-2 gap-4 px-1">
+      <div className="grid grid-cols-2 gap-4 px-1">
         {filteredMovies.map(movie => (
           <Link
             key={movie.id}
@@ -145,7 +132,7 @@ function Recommendations() {
             </div>
           </Link>
         ))}
-      </div> */}
+      </div>
       
       {filteredMovies.length === 0 && (
         <div className="text-center py-8">
