@@ -66,7 +66,7 @@ function Home() {
         </div>
 
         {/* Scrollable Container */}
-        <div className="flex w-90 space-x-3 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent scrollbar-thumb-rounded-full">
+        <div className="flex space-x-3 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent scrollbar-thumb-rounded-full">
           <div className="flex-shrink-0 w-1"></div>
           {movies.map((movie) => (
             <Link
@@ -101,9 +101,9 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-50 font-sans py-6 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-blue-50 font-sans ">
       {/* Added overflow-x-hidden here */}
-      <div className="container mx-auto max-w-7xl overflow-x-hidden">
+      <div className="container w-[352px]">
         {searchQuery ? (
           // Search Results View
           <div ref={searchResultsRef}>
