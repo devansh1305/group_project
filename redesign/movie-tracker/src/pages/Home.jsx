@@ -5,6 +5,7 @@ import { mockMovies } from "../data/mockData";
 import StarRating from "../components/StarRating";
 import MovieListItem from "../components/MovieListItem";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import StackedPlatformLogos from "../components/StackedPlatformLogos";
 
 function Home() {
   const location = useLocation();
@@ -62,6 +63,90 @@ function Home() {
     backgroundColor: "var(--bsky-bg-secondary)",
     border: "1px solid var(--bsky-border)",
     borderRadius: "0.75rem",
+  };
+
+  const CarouselSectionStacked = ({ title, movies, viewAllLink }) => {
+    if (!movies || movies.length === 0) {
+      return null;
+    }
+
+    const platformBadgeStyle = {
+      backgroundColor: "var(--bsky-bg-tertiary)",
+      color: "var(--bsky-text-secondary)",
+      fontSize: "0.6rem",
+    };
+
+    return (
+      <section className="mb-6">
+        <div className="flex justify-between items-center mb-3">
+          <h2 style={sectionTitleStyle} className="text-lg">
+            {title}
+          </h2>
+          <Link
+            to={viewAllLink}
+            style={viewAllStyle}
+            className="flex items-center text-sm font-medium group"
+          >
+            View All
+            <ChevronRightIcon className="w-4 h-4 ml-0.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </div>
+
+        <div className="flex space-x-4 overflow-x-auto pb-4 scrollbar-hide">
+          {movies.map((movie) => (
+            <Link
+              key={movie.id}
+              to={`/movie/${movie.id}`}
+              className="flex-shrink-0 w-32 sm:w-36 group"
+            >
+              <div
+                style={movieCardStyle}
+                className="aspect-[2/3] overflow-hidden shadow-md transition-all"
+              >
+                {movie.poster ? (
+                  <img
+                    src={movie.poster}
+                    alt={movie.title}
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full">
+                    <span
+                      style={{ color: "var(--bsky-text-muted)" }}
+                      className="text-xs"
+                    >
+                      No Image
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* IMDb Rating */}
+              <div className="mt-2 flex items-center space-x-1">
+                <StarRating rating={movie.imdbRating / 2} size="small" />
+                <span
+                  style={{ color: "var(--bsky-text-secondary)" }}
+                  className="text-xs"
+                >
+                  {movie.imdbRating}
+                </span>
+              </div>
+
+              {/* Streaming Platforms - Updated to use stacked logos */}
+              {movie.streamingServices &&
+                movie.streamingServices.length > 0 && (
+                  <div className="mt-1 h-8">
+                    <StackedPlatformLogos
+                      platforms={movie.streamingServices}
+                      maxVisible={2}
+                    />
+                  </div>
+                )}
+            </Link>
+          ))}
+        </div>
+      </section>
+    );
   };
 
   // src/pages/Home.jsx - Updated CarouselSection component
