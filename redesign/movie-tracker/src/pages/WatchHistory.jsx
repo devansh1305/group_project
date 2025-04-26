@@ -36,6 +36,11 @@ function WatchHistory() {
     onlyMyPlatforms: false,
   });
 
+  const titleStyle = {
+    color: 'var(--bsky-text-primary)',
+    fontWeight: '500',
+  };
+  
   // Helper function to calculate review text color based on rating
   const getReviewColor = (rating) => {
     const mutedRed = '#FF6347'; // Tomato
@@ -86,9 +91,9 @@ function WatchHistory() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-nowrap text-gray-900">Watch History</h2>
+        <h2 className="text-xl font-bold text-nowrap text-indigo-700">Watch History</h2>
         <div className="flex space-x-4">
-          <select
+          {/* <select
             className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
             value={activeFilters.sortBy}
             onChange={(e) => setActiveFilters(prev => ({ ...prev, sortBy: e.target.value }))}
@@ -97,11 +102,11 @@ function WatchHistory() {
             <option value="date-old">Oldest First</option>
             <option value="rating-high">Highest Rated</option>
             <option value="rating-low">Lowest Rated</option>
-          </select>
+          </select> */}
           <button
             type="button"
             onClick={() => setShowFilterModal(true)}
-            className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md bg-indigo-800 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             <FunnelIcon className="mr-2 h-4 w-4" aria-hidden="true" />
             Filters
@@ -147,7 +152,8 @@ function WatchHistory() {
                 className="w-24 h-auto rounded-md"
               />
               <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">{movie.title}</h3>
+                {/* <h3 className="text-lg font-medium text-gray-900">{movie.title}</h3> */}
+                <h3 style={titleStyle}>{movie.title}</h3>
                 <div className="flex items-center mt-1">
                   {[...Array(5)].map((_, index) =>
                     index < Math.floor(movie.rating) ? (
