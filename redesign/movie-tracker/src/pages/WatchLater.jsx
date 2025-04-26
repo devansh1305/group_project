@@ -1,48 +1,52 @@
 // src/pages/WatchLater.jsx
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FunnelIcon } from '@heroicons/react/24/outline';
-import MovieCard from '../components/MovieCard';
-import FilterModal from '../components/FilterModal';
-import { mockMovies } from '../data/mockData';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FunnelIcon } from "@heroicons/react/24/outline";
+import MovieListItem from "../components/MovieListItem";
+import FilterModal from "../components/FilterModal";
+import { mockMovies } from "../data/mockData";
 
 function WatchLater() {
   const [showFilterModal, setShowFilterModal] = useState(false);
   const [activeFilters, setActiveFilters] = useState({
     genres: [],
     platforms: [],
-    sortBy: 'date-new', // Default sort
+    sortBy: "date-new", // Default sort
     onlyMyPlatforms: false,
   });
-  
+
   // Filter and sort movies
-  let filteredMovies = mockMovies.filter(movie => movie.categories.includes('watchLater'));
-  
+  let filteredMovies = mockMovies.filter((movie) =>
+    movie.categories.includes("watchLater")
+  );
+
   // Apply genre filter
   if (activeFilters.genres.length > 0) {
-    filteredMovies = filteredMovies.filter(movie => 
-      movie.genres.some(genre => activeFilters.genres.includes(genre))
+    filteredMovies = filteredMovies.filter((movie) =>
+      movie.genres.some((genre) => activeFilters.genres.includes(genre))
     );
   }
-  
+
   // Apply platform filter
   if (activeFilters.platforms.length > 0) {
-    filteredMovies = filteredMovies.filter(movie => 
-      movie.streamingServices.some(service => activeFilters.platforms.includes(service))
+    filteredMovies = filteredMovies.filter((movie) =>
+      movie.streamingServices.some((service) =>
+        activeFilters.platforms.includes(service)
+      )
     );
   }
-  
+
   // Apply sorting
   if (activeFilters.sortBy) {
     filteredMovies = [...filteredMovies].sort((a, b) => {
       switch (activeFilters.sortBy) {
-        case 'rating-high':
+        case "rating-high":
           return b.rating - a.rating;
-        case 'rating-low':
+        case "rating-low":
           return a.rating - b.rating;
-        case 'date-new':
+        case "date-new":
           return new Date(b.releaseDate) - new Date(a.releaseDate);
-        case 'date-old':
+        case "date-old":
           return new Date(a.releaseDate) - new Date(b.releaseDate);
         default:
           return 0;
@@ -52,74 +56,124 @@ function WatchLater() {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl text-nowrap font-bold text-gray-900">Watch Later</h2>
-        <div className="flex space-x-4">
+      <div className="flex justify-between items-center mb-4">
+        <h2
+          className="text-lg font-bold"
+          style={{ color: "var(--bsky-text-primary)" }}
+        >
+          Watch Later
+        </h2>
+        <div className="flex items-center space-x-2">
           <select
-            className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            className="block pl-2 pr-6 py-1 text-xs rounded-md"
+            style={{
+              backgroundColor: "var(--bsky-bg-tertiary)",
+              color: "var(--bsky-text-primary)",
+              border: "1px solid var(--bsky-border)",
+            }}
             value={activeFilters.sortBy}
-            onChange={(e) => setActiveFilters(prev => ({ ...prev, sortBy: e.target.value }))}
+            onChange={(e) =>
+              setActiveFilters((prev) => ({ ...prev, sortBy: e.target.value }))
+            }
           >
             <option value="date-new">Newest First</option>
             <option value="date-old">Oldest First</option>
             <option value="rating-high">Highest Rated</option>
             <option value="rating-low">Lowest Rated</option>
           </select>
-          
+
           <button
             type="button"
             onClick={() => setShowFilterModal(true)}
-            className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="inline-flex items-center px-3 py-1.5 text-sm rounded-md"
+            style={{
+              backgroundColor: "var(--bsky-bg-tertiary)",
+              color: "var(--bsky-text-primary)",
+              border: "1px solid var(--bsky-border)",
+            }}
           >
             <FunnelIcon className="mr-2 h-4 w-4" aria-hidden="true" />
             Filters
           </button>
         </div>
       </div>
-      
+
       {/* Active filters */}
-      {(activeFilters.genres.length > 0 || activeFilters.platforms.length > 0 || activeFilters.onlyMyPlatforms) && (
-        <div className="mb-6">
-          <h2 className="text-sm font-medium text-gray-500">Active Filters:</h2>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {activeFilters.genres.map(genre => (
-              <span key={genre} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
+      {(activeFilters.genres.length > 0 ||
+        activeFilters.platforms.length > 0 ||
+        activeFilters.onlyMyPlatforms) && (
+        <div className="mb-3">
+          <h2
+            style={{ color: "var(--bsky-text-muted)" }}
+            className="text-xs font-medium mb-1"
+          >
+            Filters:
+          </h2>
+          <div className="flex flex-wrap gap-1">
+            {activeFilters.genres.map((genre) => (
+              <span
+                key={genre}
+                className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium"
+                style={{
+                  backgroundColor: "var(--bsky-bg-tertiary)",
+                  color: "var(--bsky-text-secondary)",
+                }}
+              >
                 {genre}
               </span>
             ))}
-            {activeFilters.platforms.map(platform => (
-              <span key={platform} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+            {activeFilters.platforms.map((platform) => (
+              <span
+                key={platform}
+                className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium"
+                style={{
+                  backgroundColor: "var(--bsky-bg-tertiary)",
+                  color: "var(--bsky-text-secondary)",
+                }}
+              >
                 {platform}
               </span>
             ))}
             {activeFilters.onlyMyPlatforms && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                Only My Platforms
+              <span
+                className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium"
+                style={{
+                  backgroundColor: "var(--bsky-bg-tertiary)",
+                  color: "var(--bsky-accent-blue)",
+                }}
+              >
+                My Platforms
               </span>
             )}
           </div>
         </div>
       )}
-      
-      {/* Movie grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-        {filteredMovies.map(movie => (
+
+      {/* Movie list */}
+      <div className="space-y-3">
+        {filteredMovies.map((movie) => (
           <Link
             key={movie.id}
             to={`/movie/${movie.id}`}
-            state={{ from: 'watch-later' }}
+            state={{ from: "watch-later" }}
+            className="block"
           >
-            <MovieCard movie={movie} />
+            <MovieListItem movie={movie} />
           </Link>
         ))}
       </div>
-      
+
       {filteredMovies.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-500">No movies in your Watch Later list match your filters.</p>
+        <div
+          className="text-center py-8"
+          style={{ color: "var(--bsky-text-muted)" }}
+        >
+          <p className="text-sm">
+            No movies in your Watch Later list match your filters.
+          </p>
         </div>
       )}
-      
+
       {/* Filter Modal */}
       {showFilterModal && (
         <FilterModal

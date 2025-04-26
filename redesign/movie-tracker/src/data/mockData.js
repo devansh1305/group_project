@@ -15,6 +15,7 @@ export const mockMovies = [
     recognition: "Three Academy Award nominations",
     dateWatched: "12/10/2022",
     categories: ["watched", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 102,
@@ -31,6 +32,7 @@ export const mockMovies = [
     recognition: "BAFTA Award for Best Production Design",
     dateWatched: "12/17/2022",
     categories: ["watched", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 103,
@@ -47,6 +49,7 @@ export const mockMovies = [
     recognition: "Two BAFTA Award nominations",
     dateWatched: "12/24/2022",
     categories: ["watched", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 104,
@@ -63,6 +66,7 @@ export const mockMovies = [
     recognition: "Academy Award nomination for Best Art Direction",
     dateWatched: "12/31/2022",
     categories: ["watched", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 105,
@@ -78,6 +82,7 @@ export const mockMovies = [
     writer: "J.K. Rowling, Michael Goldenberg",
     recognition: "BAFTA Award for Best Production Design",
     categories: ["watchLater"],
+    length: "2h 32m",
   },
   {
     id: 106,
@@ -93,6 +98,7 @@ export const mockMovies = [
     writer: "J.K. Rowling, Steve Kloves",
     recognition: "Academy Award nomination for Best Cinematography",
     categories: ["watchLater"],
+    length: "2h 32m",
   },
   {
     id: 107,
@@ -108,6 +114,7 @@ export const mockMovies = [
     writer: "J.K. Rowling, Steve Kloves",
     recognition: "Two Academy Award nominations",
     categories: ["watchLater"],
+    length: "2h 32m",
   },
   {
     id: 108,
@@ -123,6 +130,7 @@ export const mockMovies = [
     writer: "J.K. Rowling, Steve Kloves",
     recognition: "Three Academy Award nominations",
     categories: ["watchLater", "recommended"],
+    length: "2h 32m",
   },
   // Keep your existing movie entries, then add these:
   {
@@ -141,6 +149,7 @@ export const mockMovies = [
     recognition: "Academy Award for Best Visual Effects",
     dateWatched: "03/15/2023",
     categories: ["recommended", "watched"],
+    length: "2h 32m",
   },
   {
     id: 2,
@@ -157,6 +166,7 @@ export const mockMovies = [
     recognition: "Seven Academy Award nominations",
     dateWatched: "01/20/2023",
     categories: ["watched"],
+    length: "2h 32m",
   },
   {
     id: 13,
@@ -174,6 +184,7 @@ export const mockMovies = [
     recognition: "Academy Award for Best Picture",
     dateWatched: "09/15/2023",
     categories: ["watched", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 14,
@@ -190,6 +201,7 @@ export const mockMovies = [
     recognition: "Six Academy Awards",
     dateWatched: "11/01/2022",
     categories: ["recommended"],
+    length: "2h 32m",
   },
   {
     id: 15,
@@ -206,6 +218,7 @@ export const mockMovies = [
     recognition: "Academy Award for Best Picture",
     dateWatched: "02/10/2023",
     categories: ["watched", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 16,
@@ -221,6 +234,7 @@ export const mockMovies = [
     writer: "Ehren Kruger, Eric Warren Singer, Christopher McQuarrie",
     recognition: "Academy Award for Best Sound",
     categories: ["watchLater"],
+    length: "2h 32m",
   },
   {
     id: 17,
@@ -238,6 +252,7 @@ export const mockMovies = [
       "Academy Award nominations for Sound, Visual Effects, and Makeup",
     dateWatched: "05/20/2022",
     categories: ["watched"],
+    length: "2h 32m",
   },
   {
     id: 18,
@@ -253,6 +268,7 @@ export const mockMovies = [
     writer: "Stanley Kubrick, Diane Johnson",
     recognition: "Considered one of the greatest horror films of all time",
     categories: ["recommended", "watchLater"],
+    length: "2h 32m",
   },
   {
     id: 19,
@@ -268,6 +284,7 @@ export const mockMovies = [
     writer: "James Gunn",
     recognition: "Visual Effects Society Award nominations",
     categories: ["watchLater"],
+    length: "2h 32m",
   },
   {
     id: 20,
@@ -284,6 +301,7 @@ export const mockMovies = [
     recognition: "Academy Award for Best Costume Design",
     dateWatched: "01/15/2023",
     categories: ["watched"],
+    length: "2h 32m",
   },
   {
     id: 21,
@@ -302,6 +320,7 @@ export const mockMovies = [
     recognition: "Multiple Academy Award nominations",
     dateWatched: "09/01/2023",
     categories: ["watched", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 22,
@@ -319,6 +338,7 @@ export const mockMovies = [
     recognition: "Academy Award nominations including Best Adapted Screenplay",
     dateWatched: "08/10/2023",
     categories: ["watched"],
+    length: "2h 32m",
   },
   {
     id: 23,
@@ -335,6 +355,7 @@ export const mockMovies = [
     recognition: "Highest-grossing film based on a video game",
     dateWatched: "06/20/2023",
     categories: ["watched"],
+    length: "2h 32m",
   },
   {
     id: 24,
@@ -350,6 +371,7 @@ export const mockMovies = [
     writer: "Christopher McQuarrie",
     recognition: "Visual Effects Society Award nominations",
     categories: ["watchLater", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 25,
@@ -365,6 +387,7 @@ export const mockMovies = [
     writer: "Tony McNamara",
     recognition: "Academy Award for Best Actress (Emma Stone)",
     categories: ["watchLater", "recommended"],
+    length: "2h 32m",
   },
   {
     id: 26,
@@ -381,6 +404,7 @@ export const mockMovies = [
     recognition:
       "Academy Award for Best Supporting Actress (Da'Vine Joy Randolph)",
     categories: ["watchLater"],
+    length: "2h 32m",
   },
   {
     id: 27,
@@ -396,5 +420,6 @@ export const mockMovies = [
     writer: "Megan McDonnell, Nia DaCosta",
     recognition: null,
     categories: ["watchLater"],
+    length: "2h 32m",
   },
 ];
