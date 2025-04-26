@@ -64,7 +64,7 @@ function Recommendations() {
           Recommendations
         </h2>
         <div className="flex items-center space-x-2">
-          <select
+          {/* <select
             className="block pl-2 pr-6 py-1 text-xs rounded-md"
             style={{
               backgroundColor: "var(--bsky-bg-tertiary)",
@@ -80,7 +80,7 @@ function Recommendations() {
             <option value="rating-low">Low Rated</option>
             <option value="date-new">Newest</option>
             <option value="date-old">Oldest</option>
-          </select>
+          </select> */}
 
           <button
             type="button"

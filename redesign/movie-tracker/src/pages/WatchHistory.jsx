@@ -75,7 +75,7 @@ function WatchHistory() {
           Watch History
         </h2>
         <div className="flex items-center space-x-2">
-          <select
+          {/* <select
             className="block pl-2 pr-6 py-1 text-xs rounded-md"
             style={{
               backgroundColor: "var(--bsky-bg-tertiary)",
@@ -91,7 +91,7 @@ function WatchHistory() {
             <option value="date-old">Oldest First</option>
             <option value="rating-high">Highest Rated</option>
             <option value="rating-low">Lowest Rated</option>
-          </select>
+          </select> */}
 
           <button
             type="button"
