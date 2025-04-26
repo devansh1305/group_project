@@ -91,34 +91,34 @@ function FilterModal({ onClose, onApplyFilters }) {
   };
 
   const modalBackdropStyle = {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    backdropFilter: 'blur(4px)',
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    backdropFilter: "blur(4px)",
   };
 
   const modalStyle = {
-    backgroundColor: 'var(--bsky-bg-secondary)',
-    border: '1px solid var(--bsky-border)',
-    borderRadius: '0.75rem',
+    backgroundColor: "var(--bsky-bg-secondary)",
+    border: "1px solid var(--bsky-border)",
+    borderRadius: "0.75rem",
   };
 
   const modalHeaderStyle = {
-    borderBottom: '1px solid var(--bsky-border)',
-    color: 'var(--bsky-text-primary)',
+    borderBottom: "1px solid var(--bsky-border)",
+    color: "var(--bsky-text-primary)",
   };
 
   const modalFooterStyle = {
-    borderTop: '1px solid var(--bsky-border)',
+    borderTop: "1px solid var(--bsky-border)",
   };
 
   const legendStyle = {
-    color: 'var(--bsky-text-secondary)',
-    fontWeight: '600',
+    color: "var(--bsky-text-secondary)",
+    fontWeight: "600",
   };
 
   const selectStyle = {
-    backgroundColor: 'var(--bsky-bg-tertiary)',
-    color: 'var(--bsky-text-primary)',
-    border: '1px solid var(--bsky-border)',
+    backgroundColor: "var(--bsky-bg-tertiary)",
+    color: "var(--bsky-text-primary)",
+    border: "1px solid var(--bsky-border)",
   };
 
   const CustomCheckbox = ({
@@ -131,38 +131,42 @@ function FilterModal({ onClose, onApplyFilters }) {
     const getBoxStyles = () => {
       if (checked && !disabled) {
         return {
-          backgroundColor: 'var(--bsky-accent-blue)',
-          borderColor: 'var(--bsky-accent-blue)',
+          backgroundColor: "var(--bsky-accent-blue)",
+          borderColor: "var(--bsky-accent-blue)",
         };
       } else if (checked && disabled) {
         return {
-          backgroundColor: 'var(--bsky-accent-blue)',
-          borderColor: 'var(--bsky-accent-blue)',
+          backgroundColor: "var(--bsky-accent-blue)",
+          borderColor: "var(--bsky-accent-blue)",
           opacity: 0.5,
         };
       } else if (!checked && disabled) {
         return {
-          backgroundColor: 'var(--bsky-bg-tertiary)',
-          borderColor: 'var(--bsky-border)',
+          backgroundColor: "var(--bsky-bg-tertiary)",
+          borderColor: "var(--bsky-border)",
           opacity: 0.6,
         };
       } else {
         return {
-          backgroundColor: 'var(--bsky-bg-tertiary)',
-          borderColor: 'var(--bsky-border)',
+          backgroundColor: "var(--bsky-bg-tertiary)",
+          borderColor: "var(--bsky-border)",
         };
       }
     };
 
     const getLabelStyles = () => {
       if (checked && !disabled) {
-        return { color: 'var(--bsky-accent-blue)', fontWeight: 500 };
+        return { color: "var(--bsky-accent-blue)", fontWeight: 500 };
       } else if (checked && disabled) {
-        return { color: 'var(--bsky-accent-blue)', fontWeight: 500, opacity: 0.7 };
+        return {
+          color: "var(--bsky-accent-blue)",
+          fontWeight: 500,
+          opacity: 0.7,
+        };
       } else if (!checked && disabled) {
-        return { color: 'var(--bsky-text-muted)' };
+        return { color: "var(--bsky-text-muted)" };
       } else {
-        return { color: 'var(--bsky-text-secondary)' };
+        return { color: "var(--bsky-text-secondary)" };
       }
     };
 
@@ -180,14 +184,11 @@ function FilterModal({ onClose, onApplyFilters }) {
           {checked && (
             <CheckIcon
               className="w-3.5 h-3.5"
-              style={{ color: disabled ? 'rgba(255, 255, 255, 0.7)' : 'white' }}
+              style={{ color: disabled ? "rgba(255, 255, 255, 0.7)" : "white" }}
             />
           )}
         </div>
-        <span
-          style={getLabelStyles()}
-          className="text-sm select-none"
-        >
+        <span style={getLabelStyles()} className="text-sm select-none">
           {label}
         </span>
         <input
@@ -208,14 +209,20 @@ function FilterModal({ onClose, onApplyFilters }) {
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={handleBackdropClick}
     >
-      <div style={modalStyle} className="w-full max-w-md max-h-[90vh] flex flex-col shadow-2xl">
+      <div
+        style={modalStyle}
+        className="w-full max-w-md max-h-[90vh] flex flex-col shadow-2xl"
+      >
         {/* Modal Header */}
-        <div style={modalHeaderStyle} className="flex justify-between items-center p-4 sm:p-5">
+        <div
+          style={modalHeaderStyle}
+          className="flex justify-between items-center p-4 sm:p-5"
+        >
           <h3 className="text-lg font-semibold">Filter & Sort</h3>
           <button
             type="button"
             className="p-1.5 rounded-full hover:bg-[var(--bsky-bg-tertiary)] transition-colors"
-            style={{ color: 'var(--bsky-text-muted)' }}
+            style={{ color: "var(--bsky-text-muted)" }}
             onClick={onClose}
           >
             <span className="sr-only">Close</span>
@@ -249,7 +256,10 @@ function FilterModal({ onClose, onApplyFilters }) {
               Available On
             </legend>
             {/* "Only My Platforms" Toggle */}
-            <div className="mb-3 pb-3" style={{ borderBottom: '1px solid var(--bsky-border)' }}>
+            <div
+              className="mb-3 pb-3"
+              style={{ borderBottom: "1px solid var(--bsky-border)" }}
+            >
               <CustomCheckbox
                 id="only-my-platforms"
                 label="Only Show My Platforms"
@@ -272,14 +282,38 @@ function FilterModal({ onClose, onApplyFilters }) {
             </div>
           </fieldset>
 
-          {/* Sort options */}
+          {/* Sort options 1*/}
           <fieldset>
             <label
               htmlFor="sort-by"
               style={legendStyle}
               className="text-sm mb-1 block"
             >
-              Sort By
+              Release Date by
+            </label>
+            <select
+              id="release-sort-by"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              style={selectStyle}
+              className="block w-full rounded-lg py-2 pl-3 pr-10 text-sm shadow-sm transition"
+            >
+              <option value="">Default</option>
+              {/* <option value="rating-high">Ratings: Highest First</option> */}
+              {/* <option value="rating-low">Ratings: Lowest First</option> */}
+              <option value="date-new">Newest First</option>
+              <option value="date-old">Oldest First</option>
+            </select>
+          </fieldset>
+
+          {/* Sort options 2*/}
+          <fieldset>
+            <label
+              htmlFor="sort-by"
+              style={legendStyle}
+              className="text-sm mb-1 block"
+            >
+              Ratings by
             </label>
             <select
               id="sort-by"
@@ -289,23 +323,26 @@ function FilterModal({ onClose, onApplyFilters }) {
               className="block w-full rounded-lg py-2 pl-3 pr-10 text-sm shadow-sm transition"
             >
               <option value="">Default</option>
-              <option value="rating-high">Ratings: Highest First</option>
-              <option value="rating-low">Ratings: Lowest First</option>
-              <option value="date-new">Release Date: Newest First</option>
-              <option value="date-old">Release Date: Oldest First</option>
+              <option value="rating-high">Highest First</option>
+              <option value="rating-low">Lowest First</option>
+              {/* <option value="date-new">Release Date: Newest First</option> */}
+              {/* <option value="date-old">Release Date: Oldest First</option> */}
             </select>
           </fieldset>
         </div>
 
         {/* Modal Footer - Actions */}
-        <div style={modalFooterStyle} className="flex justify-between items-center p-4 sm:p-5 rounded-b-xl flex-shrink-0">
+        <div
+          style={modalFooterStyle}
+          className="flex justify-between items-center p-4 sm:p-5 rounded-b-xl flex-shrink-0"
+        >
           <button
             type="button"
             className="px-4 py-2 rounded-lg border text-sm font-medium hover:bg-[var(--bsky-bg-tertiary)] transition-colors"
-            style={{ 
-              borderColor: 'var(--bsky-border)',
-              backgroundColor: 'var(--bsky-bg-tertiary)', 
-              color: 'var(--bsky-text-secondary)'
+            style={{
+              borderColor: "var(--bsky-border)",
+              backgroundColor: "var(--bsky-bg-tertiary)",
+              color: "var(--bsky-text-secondary)",
             }}
             onClick={handleReset}
           >
@@ -314,9 +351,9 @@ function FilterModal({ onClose, onApplyFilters }) {
           <button
             type="button"
             className="flex items-center justify-center px-5 py-2 border-0 text-sm font-semibold rounded-lg shadow-md transition-colors"
-            style={{ 
-              backgroundColor: 'var(--bsky-accent-blue)',
-              color: 'white',
+            style={{
+              backgroundColor: "var(--bsky-accent-blue)",
+              color: "white",
             }}
             onClick={handleApply}
           >
