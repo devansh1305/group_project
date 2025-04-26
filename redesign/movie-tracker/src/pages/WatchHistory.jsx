@@ -54,6 +54,37 @@ function WatchHistory() {
     });
   }
 
+  const getRatingColor = (rating) => {
+    // Convert rating (0-5) to a percentage
+    const percentage = rating / 5;
+
+    // Define base colors for low, medium, and high ratings
+    // Using more muted/subdued colors to avoid eye strain
+    const lowColor = { r: 180, g: 75, b: 75 }; // Muted red
+    const midColor = { r: 180, g: 150, b: 60 }; // Muted yellow/amber
+    const highColor = { r: 75, g: 160, b: 75 }; // Muted green
+
+    let r, g, b;
+
+    // Create a smooth gradient between the colors
+    if (percentage <= 0.5) {
+      // Blend from low to mid color
+      const blendFactor = percentage * 2; // Scale to 0-1 range
+      r = Math.round(lowColor.r + blendFactor * (midColor.r - lowColor.r));
+      g = Math.round(lowColor.g + blendFactor * (midColor.g - lowColor.g));
+      b = Math.round(lowColor.b + blendFactor * (midColor.b - lowColor.b));
+    } else {
+      // Blend from mid to high color
+      const blendFactor = (percentage - 0.5) * 2; // Scale to 0-1 range
+      r = Math.round(midColor.r + blendFactor * (highColor.r - midColor.r));
+      g = Math.round(midColor.g + blendFactor * (highColor.g - midColor.g));
+      b = Math.round(midColor.b + blendFactor * (highColor.b - midColor.b));
+    }
+
+    // Return CSS rgb color
+    return `rgb(${r}, ${g}, ${b})`;
+  };
+
   const handleReviewEdit = (movie, e) => {
     e.preventDefault(); // Prevent navigating to movie detail page
     setSelectedMovie(movie);
@@ -269,7 +300,7 @@ function WatchHistory() {
                     <p
                       className="text-xs italic relative group-hover:blur-sm transition-all duration-200 py-2"
                       style={{
-                        color: "var(--bsky-text-secondary)",
+                        color: getRatingColor(movie.rating),
                         borderLeft: "3px solid var(--bsky-accent-blue)",
                         paddingLeft: "0.5rem",
                       }}
@@ -289,6 +320,36 @@ function WatchHistory() {
                 </div>
               </div>
             )}
+            {/* {movie.review && (
+              <div className="px-3 pb-3 pt-0">
+                <div className="relative">
+                  <div
+                    onClick={(e) => handleReviewEdit(movie, e)}
+                    className="group cursor-pointer"
+                  >
+                    <p
+                      className="text-xs italic relative group-hover:blur-sm transition-all duration-200 py-2"
+                      style={{
+                        color: "var(--bsky-text-secondary)",
+                        borderLeft: "3px solid var(--bsky-accent-blue)",
+                        paddingLeft: "0.5rem",
+                      }}
+                    >
+                      "
+                      {movie.review.length > 150
+                        ? movie.review.substring(0, 150) + "..."
+                        : movie.review}
+                      "
+                    </p>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <div className="bg-black bg-opacity-40 rounded-full p-2">
+                        <PencilIcon className="h-5 w-5 text-white" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )} */}
           </div>
         ))}
       </div>
